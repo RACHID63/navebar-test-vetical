@@ -1,10 +1,4 @@
-.navbar {
-  height: 374px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-}
+
 
 div.boxliens {
   border: solid 2px green;
@@ -48,7 +42,8 @@ img {
 }
 
 div#navbarNav.collapse.navbar-collapse {
-  width: 450px;
+  width: 100%;
+  margin-right: 0px;
 }
 
 a {
@@ -66,16 +61,7 @@ a:hover {
 img {
   height: 95px;
   position: relative;
-  /* left: -342%;
-  top: 0.06vh; */
-
-  /* height: 95px;
-    margin: 0px;
-    padding: 9px;
-    align-items: center;
-    position: relative;
-    top: 5px;
-    left: -455px;*/
+ 
 }
 
 .navbar-nav {
@@ -282,3 +268,35 @@ table.tableau tfoot .links a {
 .btn-danger {
   margin-top: 0px;
 }
+
+
+@media only screen and (max-width: 580px) {
+  .h1, h1 {
+  font-size: 1.5rem;
+  }
+
+  table.tableau td, table.tableau th {
+    font-size: 10px;
+    
+  }
+
+  table.tableau tbody td {
+    font-size: 10px;
+    
+  }
+
+  .btn {
+    font-size: 12px;
+    border-radius: 10px;
+  }
+ 
+
+  input.btn.btn-primary {
+    width: 100px;
+    height: 38px;
+  }
+  
+
+}
+
+

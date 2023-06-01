@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,40 +10,88 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      
-          <div class="boxliens">
-            <div class="identite">
-              <a class="navbar-brand" href="#"><img src="./images/RACHID_after (1).jpg" alt="Logo" style="height: 95px;"></a>
-            </div>
-            <a class="nav-link" href="#">Contact</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <form class="form-inline mt-3 mt-sm-0">
-                <input type="text" class="form-control mb-3" id="nomPosteInput" placeholder="Nom du poste" required>
-                <input type="text" class="form-control mb-3" id="adresseEntrepriseInput" placeholder="Adresse entreprise" required>
-                <input type="text" class="form-control mb-3" id="candidatureEnvoyeeInput" placeholder="Candidature envoyée" required>
-                <input type="submit" class="btn btn-primary btn-block" value="Valider">
-              </form>
-            </div>
-          </div>
-        
-      </nav>
-      <h1>Liste des candidatures</h1>
-  <table class="tableau" id="tableau">
-    <tr>
-      <th><button class="btn btn-danger mt-0" onclick="supprimerSelection()">Supprimer</button></th>
-      <th>Nom du poste</th>
-      <th>Adresse entreprise</th>
-      <th>Candidature envoyée</th>
-    </tr>
-    
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark d-flex justify-content-center align-items-center" style="height: 374px;">
+    <div class="boxliens">
+      <div class="identite">
+        <a class="navbar-brand" href="#"><img src="./images/RACHID_after (1).jpg" alt="Logo" style="height: 95px;"></a>
+      </div>
+      <a class="nav-link" href="#">Contact</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <form class="form-inline ml-auto" onsubmit="ajouterLigne(event)">
+          <input type="text" class="form-control mb-3" id="nomPosteInput" placeholder="Nom du poste" required>
+          <input type="text" class="form-control mb-3" id="adresseEntrepriseInput" placeholder="Adresse entreprise" required>
+          <input type="text" class="form-control mb-3" id="candidatureEnvoyeeInput" placeholder="Candidature envoyée" required>
+          <input type="submit" class="btn btn-primary mt-0" value="Valider">
+        </form>
+      </div>
+    </div>
+  </nav>
+  
+  <h1>Liste des candidatures</h1>
+  <div class="table-responsive">
+  
+    <table class="tableau" id="tableau">
+      <tr>
+        <th><button class="btn btn-danger mt-0" onclick="supprimerSelection()">Supprimer</button></th>
+        <th>Nom du poste</th>
+        <th>Adresse entreprise</th>
+        <th>Candidature envoyée</th>
+      </tr>
     <!-- Les autres lignes de données initiales ici -->
   </table>
-      
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+</div>
+  
+  <footer class="footercontainer">
+    <div class="footer">
+      <div class="wrapper">
+        <div class="button">
+          <div class="icon">
+            <i class="fab fa-facebook-f"></i>
+          </div>
+          <a href="https://Facebook.com/?lang=fr" target="_blank">
+            <span>Facebook</span>
+          </a>
+        </div>
+
+        <div class="button">
+          <div class="icon">
+            <i class="fab fa-twitter"></i>
+          </div>
+          <a href="https://twitter.com/?lang=fr" target="_blank">
+            <span>Twitter</span>
+          </a>
+        </div>
+        <div class="button">
+          <div class="icon">
+            <i class="fab fa-instagram"></i>
+          </div>
+          <a href="https://www.instagram.com/" target="_blank">
+            <span>Instagram</span>
+          </a>
+        </div>
+        <div class="button">
+          <div class="icon">
+            <i class="fab fa-codepen"></i>
+          </div>
+          <a href="https://codepen.io/your-work" target="_blank">
+            <span>Codepen</span>
+          </a>
+        </div>
+        <div class="button">
+          <div class="icon">
+            <i class="fab fa-youtube"></i>
+          </div>
+          <a href="https://www.youtube.com/channel/UCE6Px8oF9-i3-udNVcMV6Ag" target="_blank">
+            <span>YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="./jquery-3.7.0.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="script.js"></script>
 </body>
