@@ -145,6 +145,12 @@ input.form-control {
   margin-left: auto;
 }
 
+#TEXTH1 {
+  display: flex;
+  justify-content: center;
+
+}
+
 h1 {
   text-align: center;
   border: whitesmoke;
@@ -157,7 +163,6 @@ inputbtn.btn-primary {
 
 .btn {
   font-size: 20px;
-  background: red;
   color: whitesmoke;
   border-radius: 10px;
 }
@@ -166,6 +171,15 @@ inputbtn.btn-primary {
   transition: 0.35s;
   background: blue;
 }
+
+button.sauvegarder{
+  margin-right: 150px;
+}
+
+button.imprimer{
+  margin-left: 150px;
+}
+
 
 table.tableau {
   font-family: "Arial Black", Gadget, sans-serif;
