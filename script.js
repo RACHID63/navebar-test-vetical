@@ -1,3 +1,5 @@
+let id = 0;
+
 function ajouterLigne(event) {
   event.preventDefault();
   
@@ -20,19 +22,20 @@ function ajouterLigne(event) {
   nouvelleLigne.insertCell(1).textContent = nomPoste;
   nouvelleLigne.insertCell(2).textContent = adresseEntreprise;
   nouvelleLigne.insertCell(3).textContent = candidatureEnvoyee;
-
-  // Enregistrement dans le localStorage
+  
   var ligne = {
+    id: id++,
     nomPoste: nomPoste,
     adresseEntreprise: adresseEntreprise,
     candidatureEnvoyee: candidatureEnvoyee
   };
   
+  nouvelleLigne.dataset.id = ligne.id;
+  
   var lignesEnregistrees = JSON.parse(localStorage.getItem("candidatures")) || [];
   lignesEnregistrees.push(ligne);
   localStorage.setItem("candidatures", JSON.stringify(lignesEnregistrees));
   
-  // Effacer les valeurs des champs d'entrée
   document.getElementById("nomPosteInput").value = "";
   document.getElementById("adresseEntrepriseInput").value = "";
   document.getElementById("candidatureEnvoyeeInput").value = "";
@@ -48,20 +51,18 @@ function supprimerSelection() {
   
   var tableau = document.getElementById("tableau");
   
+  var lignesEnregistrees = JSON.parse(localStorage.getItem("candidatures")) || [];
+  
   for (var i = casesCoches.length - 1; i >= 0; i--) {
     var ligne = casesCoches[i].parentNode.parentNode;
     tableau.deleteRow(ligne.rowIndex);
-  }
-  
-  // Suppression dans le localStorage
-  var lignesEnregistrees = JSON.parse(localStorage.getItem("candidatures")) || [];
-  
-  for (var i = lignesEnregistrees.length - 1; i >= 0; i--) {
-    var ligneEnregistree = lignesEnregistrees[i];
-    var index = i + 1; // L'index dans le tableau est décalé de 1 par rapport à l'index de la ligne dans le tableau HTML
     
-    if (casesCoches[index]) {
-      lignesEnregistrees.splice(i, 1);
+    var id = ligne.dataset.id;
+    var index = lignesEnregistrees.findIndex(function(ligneEnregistree) {
+      return ligneEnregistree.id == id;
+    });
+    if (index !== -1) {
+      lignesEnregistrees.splice(index, 1);
     }
   }
   
@@ -69,12 +70,15 @@ function supprimerSelection() {
 }
 
 window.addEventListener("DOMContentLoaded", function() {
-  // Récupérer les données du localStorage et les afficher dans le tableau
   var lignesEnregistrees = JSON.parse(localStorage.getItem("candidatures")) || [];
   var tableau = document.getElementById("tableau");
   
   for (var i = 0; i < lignesEnregistrees.length; i++) {
     var ligneEnregistree = lignesEnregistrees[i];
+    
+    if (ligneEnregistree.id >= id) {
+      id = ligneEnregistree.id + 1;
+    }
     
     var nouvelleLigne = tableau.insertRow(-1);
     
@@ -82,8 +86,11 @@ window.addEventListener("DOMContentLoaded", function() {
     caseACocher.type = "checkbox";
     nouvelleLigne.insertCell(0).appendChild(caseACocher);
     
+    nouvelleLigne.insert
     nouvelleLigne.insertCell(1).textContent = ligneEnregistree.nomPoste;
     nouvelleLigne.insertCell(2).textContent = ligneEnregistree.adresseEntreprise;
     nouvelleLigne.insertCell(3).textContent = ligneEnregistree.candidatureEnvoyee;
+
+    nouvelleLigne.dataset.id = ligneEnregistree.id;
   }
 });
