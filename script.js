@@ -94,3 +94,23 @@ window.addEventListener("DOMContentLoaded", function() {
     nouvelleLigne.dataset.id = ligneEnregistree.id;
   }
 });
+
+function sauvegarderSelection() {
+  var lignesEnregistrees = JSON.parse(localStorage.getItem("candidatures")) || [];
+
+  var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(lignesEnregistrees));
+  var downloadAnchorNode = document.createElement('a');
+  downloadAnchorNode.setAttribute("href", dataStr);
+  downloadAnchorNode.setAttribute("download", "candidatures.json");
+  document.body.appendChild(downloadAnchorNode); // nécessaire pour le rendu du lien sur Firefox
+  downloadAnchorNode.click();
+  downloadAnchorNode.remove();
+}
+
+// Ajoutez un gestionnaire d'événement à votre bouton sauvegarder
+window.addEventListener("DOMContentLoaded", function() {
+  var boutonSauvegarder = document.querySelector(".sauvegarder");
+  boutonSauvegarder.addEventListener("click", sauvegarderSelection);
+  // ...
+});
+

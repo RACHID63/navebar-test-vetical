@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>LISTE RECHERCHE EMPLOI</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>LISTE RECHERCHE EMPLOI</title>
 </head>
+
 <body>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark d-flex justify-content-center align-items-center" style="height: 374px;">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark d-flex justify-content-center align-items-center"
+    style="height: 374px;">
     <div class="boxliens">
       <div class="identite">
         <a class="navbar-brand" href="#"><img src="./images/RACHID_after (1).jpg" alt="Logo" style="height: 95px;"></a>
       </div>
       <a class="nav-link" href="#">Contact</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <form class="form-inline ml-auto" onsubmit="ajouterLigne(event)">
+          <input type="file" id="fileUpload" style="display:none;" />
+          <button class="upload btn btn-primary mb-3" onclick="uploadFichier()">Upload</button>
           <input type="text" class="form-control mb-3" id="nomPosteInput" placeholder="Nom du poste" required>
-          <input type="text" class="form-control mb-3" id="adresseEntrepriseInput" placeholder="Adresse entreprise" required>
-          <input type="text" class="form-control mb-3" id="candidatureEnvoyeeInput" placeholder="Candidature envoyée" required>
-          <input type="submit" class="btn btn-primary mt-0" value="Valider">
+          <input type="text" class="form-control mb-3" id="adresseEntrepriseInput" placeholder="Adresse entreprise"
+            required>
+          <input type="text" class="form-control mb-3" id="candidatureEnvoyeeInput" placeholder="Candidature envoyée"
+            required>
+          <input type="submit" class="btn btn-primary mt-0 mb-5" value="Valider">
         </form>
       </div>
     </div>
   </nav>
   <div id="TEXTH1">
-  <button class="btn btn-success mt-0 sauvegarder" onclick="enregistrerSous()">enregistrer sous</button>
+    <button class="btn btn-success mt-0 sauvegarder" onclick="enregistrerSous()">enregistrer sous</button>
     <h1>LISTE RECHERCHE EMPLOI</h1>
-    <button class="btn btn-primary mt-0 imprimer" onclick="imprimer()">enregistrer sous</button>
+    <button class="btn btn-primary mt-0  imprimer " onclick="imprimerFichier()">imprimer sous</button>
   </div>
   <div class="table-responsive">
-  
+
     <table class="tableau" id="tableau">
       <tr>
         <th><button class="btn btn-danger mt-0" onclick="supprimerSelection()">Supprimer</button></th>
@@ -42,10 +50,10 @@
         <th>Adresse entreprise</th>
         <th>Candidature envoyée</th>
       </tr>
-    <!-- Les autres lignes de données initiales ici -->
-  </table>
-</div>
-  
+      <!-- Les autres lignes de données initiales ici -->
+    </table>
+  </div>
+
   <footer class="footercontainer">
     <div class="footer">
       <div class="wrapper">
@@ -97,4 +105,5 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>

@@ -2,7 +2,7 @@
 
 div.boxliens {
   border: solid 2px rgb(126, 223, 126);
-  border-radius: 10px;
+  border-radius: 45px;
   box-shadow: -5px 3px 2px whitesmoke;
   margin: 0;
   width: 357px;
@@ -31,7 +31,14 @@ div.boxliens {
 }
 
 img {
+  
+  height: 95px;
+  margin-top: 4px;
+  position: relative;
+  top: 81px;
+  left: 142px;
   border-radius: 50%
+  
 }
 
 .identite {
@@ -173,11 +180,15 @@ inputbtn.btn-primary {
 }
 
 button.sauvegarder{
-  margin-right: 150px;
+  margin-right: 300px;
+}
+
+.fileUpload {
+  border: red;
 }
 
 button.imprimer{
-  margin-left: 150px;
+  margin-left: 300px;
 }
 
 
