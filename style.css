@@ -18,6 +18,16 @@ div.boxliens {
 }
 
 
+nav {
+  background:url("./images/641691-39686705\(1\).jpg") ;
+  background-repeat: no-repeat, repeat;
+  background-size: 55%;
+  background-position: 50% 50% ;
+  
+  
+
+}
+
 .container {
   display: flex;
     flex-direction: row;
