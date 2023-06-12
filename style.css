@@ -19,13 +19,11 @@ div.boxliens {
 
 
 nav {
-  background:url("./images/641691-39686705\(1\).jpg") ;
+  background:url("./images/office.jpg") ;
   background-repeat: no-repeat, repeat;
-  background-size: cover;
-  background-position: center; /* Center the image */
-
-  
-
+  background-size: 50%;
+  background-position: bottom -590px center;
+  -webkit-background-position: center 590px;
 }
 
 .container {
