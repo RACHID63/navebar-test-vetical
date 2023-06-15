@@ -21,8 +21,8 @@ div.boxliens {
 nav {
   background:url("./images/office.jpg") ;
   background-repeat: no-repeat, repeat;
-  background-size: 50%;
-  background-position: bottom -590px center;
+  background-size: +60%;
+  background-position: bottom 70% center;
   -webkit-background-position: center 590px;
 }
 

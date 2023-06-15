@@ -39,6 +39,8 @@ function ajouterLigne(event) {
   document.getElementById("nomPosteInput").value = "";
   document.getElementById("adresseEntrepriseInput").value = "";
   document.getElementById("candidatureEnvoyeeInput").value = "";
+
+  rendreCellulesModifiables();
 }
 
 function supprimerSelection() {
@@ -69,6 +71,13 @@ function supprimerSelection() {
   localStorage.setItem("candidatures", JSON.stringify(lignesEnregistrees));
 }
 
+function rendreCellulesModifiables() {
+  var cellules = document.querySelectorAll("#tableau td");
+  for (var i = 0; i < cellules.length; i++) {
+    cellules[i].setAttribute("contenteditable", "true");
+  }
+}
+
 window.addEventListener("DOMContentLoaded", function() {
   var lignesEnregistrees = JSON.parse(localStorage.getItem("candidatures")) || [];
   var tableau = document.getElementById("tableau");
@@ -86,14 +95,16 @@ window.addEventListener("DOMContentLoaded", function() {
     caseACocher.type = "checkbox";
     nouvelleLigne.insertCell(0).appendChild(caseACocher);
     
-    nouvelleLigne.insert
     nouvelleLigne.insertCell(1).textContent = ligneEnregistree.nomPoste;
     nouvelleLigne.insertCell(2).textContent = ligneEnregistree.adresseEntreprise;
     nouvelleLigne.insertCell(3).textContent = ligneEnregistree.candidatureEnvoyee;
-
+    
     nouvelleLigne.dataset.id = ligneEnregistree.id;
   }
+  
+  rendreCellulesModifiables();
 });
+
 
 function sauvegarderSelection() {
   var lignesEnregistrees = JSON.parse(localStorage.getItem("candidatures")) || [];
@@ -113,4 +124,37 @@ window.addEventListener("DOMContentLoaded", function() {
   boutonSauvegarder.addEventListener("click", sauvegarderSelection);
   // ...
 });
+
+function rendreCellulesModifiables() {
+  var cellules = document.querySelectorAll("#tableau td");
+  for (var i = 0; i < cellules.length; i++) {
+    cellules[i].setAttribute("contenteditable", "true");
+
+    // Ajouter un écouteur d'événements qui se déclenche lorsque l'utilisateur finit d'éditer une cellule
+    cellules[i].addEventListener("blur", function() {
+      var ligne = this.parentNode;
+      var colonnes = ligne.querySelectorAll("td");
+
+      var id = ligne.dataset.id;
+
+      var lignesEnregistrees = JSON.parse(localStorage.getItem("candidatures")) || [];
+
+      // Trouver la ligne correspondante dans lignesEnregistrees
+      var index = lignesEnregistrees.findIndex(function(ligneEnregistree) {
+        return ligneEnregistree.id == id;
+      });
+
+      // Mettre à jour la valeur dans lignesEnregistrees
+      if (index !== -1) {
+        lignesEnregistrees[index].nomPoste = colonnes[1].textContent;
+        lignesEnregistrees[index].adresseEntreprise = colonnes[2].textContent;
+        lignesEnregistrees[index].candidatureEnvoyee = colonnes[3].textContent;
+
+        // Sauvegarder lignesEnregistrees dans le stockage local
+        localStorage.setItem("candidatures", JSON.stringify(lignesEnregistrees));
+      }
+    });
+  }
+}
+
 
