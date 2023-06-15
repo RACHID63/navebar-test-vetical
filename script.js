@@ -157,4 +157,58 @@ function rendreCellulesModifiables() {
   }
 }
 
+// Ajouter à la fin de votre fichier JavaScript
+
+// Modifier la fonction de tri pour gérer à la fois le tri croissant et décroissant
+function trierParCandidatureEnvoyee(croissant) {
+  var lignes = Array.from(document.getElementById("tableau").rows).slice(1); // On ignore la ligne d'en-tête
+  lignes.sort(function(a, b) {
+    var candidatureA = new Date(a.cells[3].textContent);
+    var candidatureB = new Date(b.cells[3].textContent);
+
+    // Comparer les dates
+    if (candidatureA < candidatureB) {
+      return croissant ? -1 : 1;
+    } else if (candidatureA > candidatureB) {
+      return croissant ? 1 : -1;
+    } else {
+      return 0;
+    }
+  });
+
+  var tableau = document.getElementById("tableau");
+  for (var i = 0; i < lignes.length; i++) {
+    tableau.appendChild(lignes[i]);
+  }
+}
+
+// Modifier l'écouteur d'événements pour distinguer entre un clic simple et un double clic
+window.addEventListener("DOMContentLoaded", function() {
+  var header = document.getElementById("candidatureEnvoyeeHeader");
+
+  var clickTimeout = false;
+  header.addEventListener("click", function() {
+    if (clickTimeout !== false) {
+      // Si un clic a déjà été détecté dans les 250 dernières millisecondes, c'est un double clic
+      clearTimeout(clickTimeout);
+      clickTimeout = false;
+      trierParCandidatureEnvoyee(false); // Tri décroissant pour un double clic
+    } else {
+      // Si aucun clic n'a été détecté dans les 250 dernières millisecondes, on enregistre le clic et on attend
+      clickTimeout = setTimeout(function() {
+        trierParCandidatureEnvoyee(true); // Tri croissant pour un clic simple
+        clickTimeout = false;
+      }, 250);
+    }
+  });
+});
+
+
+// Attacher l'écouteur d'événements à l'en-tête de la colonne
+window.addEventListener("DOMContentLoaded", function() {
+  var header = document.getElementById("candidatureEnvoyeeHeader");
+  header.addEventListener("click", trierParCandidatureEnvoyee);
+});
+
+
 
