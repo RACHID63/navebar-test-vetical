@@ -210,5 +210,30 @@ window.addEventListener("DOMContentLoaded", function() {
   header.addEventListener("click", trierParCandidatureEnvoyee);
 });
 
+function imprimerFichier() {
+  window.print();
+}
+
+function imprimerFichier() {
+  var tableau = document.getElementById('tableau').outerHTML;
+  var mywindow = window.open('', 'PRINT', 'height=600,width=800');
+  
+  mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+  mywindow.document.write('</head><body >');
+  mywindow.document.write('<h1>' + document.title  + '</h1>');
+  mywindow.document.write(tableau);
+  mywindow.document.write('</body></html>');
+
+  mywindow.document.close(); // nécessaire pour IE >= 10
+  mywindow.focus(); // nécessaire pour IE >= 10*/
+
+  mywindow.print();
+  mywindow.close();
+
+  return true;
+}
+
+
+
 
 
