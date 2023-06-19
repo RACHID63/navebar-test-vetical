@@ -1,5 +1,5 @@
 div.boxliens {
-  border: solid 2px rgb(126, 223, 126);
+  border: solid 6px #0000ff;
   border-radius: 45px;
   box-shadow: -5px 3px 2px whitesmoke;
   margin: 0;
@@ -35,12 +35,13 @@ nav {
 }
 
 img {
+  border: solide 6px black;
+  border-radius: 50%;
   height: 95px;
   margin-top: 4px;
   position: relative;
-  top: 81px;
-  left: 142px;
-  border-radius: 50%;
+  top: 85px;
+  left: 140px;
 }
 
 .identite {
