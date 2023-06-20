@@ -300,7 +300,52 @@ table.tableau tfoot .links a {
   margin-top: 0px;
 }
 
-@media only screen and (max-width: 580px) {
+@media only screen and (max-width: 1000px) {
+
+  body {
+    margin: 0px;
+    width: auto;
+  }
+  nav {
+    margin-top: -36px;
+    background-image: none;
+  }
+
+  div#navbarNav.collapse.navbar-collapse {
+    width: 50%;
+    margin: 0px;
+}
+
+button.upload {
+  cursor: pointer;
+  box-shadow: none;
+  margin-top: -24px;
+  margin-right: 20px;
+}
+
+#TEXTH1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+  button.sauvegarder, .btn{
+    width: 100px;
+    margin-right: 0;
+  }
+
+  imput.submit  {
+    margin: 0px;
+  }
+
+  .btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    box-shadow: none;
+}
+
+
   .h1,
   h1 {
     font-size: 1.5rem;
@@ -320,13 +365,24 @@ table.tableau tfoot .links a {
     border-radius: 10px;
   }
 
+  button.btn-primary, .btn-success {
+    margin: 0;
+    font-size: 15px;
+    border-radius: -20px;
+    height: 50px;
+  }
+
   input.btn.btn-primary {
     width: 100px;
     height: 38px;
   }
+
+  
 }
 
 @media print {
+
+  
   body {
     width: 210mm;
     height: 297mm;
@@ -352,5 +408,10 @@ table.tableau tfoot .links a {
   table, th, td {
     border: 2px solid black  !important;
 }
+
+h1 {
+  font-size: 21px;
+}
+
 }
 
