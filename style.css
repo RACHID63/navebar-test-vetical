@@ -142,14 +142,7 @@ input.form-control {
   margin-left: auto;
 }
 
-.form-inline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
-  text-align: center;
-  flex-direction: column;
-}
+
 
 .form-inline input[type="text"],
 .form-inline input[type="submit"] {
@@ -307,6 +300,15 @@ table.tableau tfoot .links a {
     margin: 0px;
     width: auto;
   }
+
+  .form-inline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+    flex-direction: column;
+}
 
   input.btn.btn-primary {
     
