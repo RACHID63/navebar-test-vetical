@@ -233,6 +233,71 @@ function imprimerFichier() {
   return true;
 }
 
+function uploadFichier() {
+  document.getElementById('fileUpload').click();
+}
+
+document.getElementById('fileUpload').addEventListener('change', function(e) {
+  var file = e.target.files[0];
+  if (!file) return;
+
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var contenu = e.target.result;
+    var candidatures = JSON.parse(contenu);
+
+    // Effacer le localStorage et le tableau actuel
+    localStorage.removeItem("candidatures");
+    var tableau = document.getElementById("tableau");
+    var lignes = tableau.getElementsByTagName("tr");
+    while (lignes.length > 1) {
+      tableau.deleteRow(1);
+    }
+
+    // Ajouter les nouvelles lignes du fichier
+    candidatures.forEach(function(candidature) {
+      ajouterLigne(candidature);
+    });
+
+    // Ré-enregistre les candidatures dans le localStorage
+    localStorage.setItem("candidatures", JSON.stringify(candidatures));
+  };
+  reader.readAsText(file);
+});
+
+// Modifier la fonction ajouterLigne pour accepter un objet candidature en paramètre
+function ajouterLigne(candidature) {
+  var nomPoste = candidature ? candidature.nomPoste : document.getElementById("nomPosteInput").value;
+  var adresseEntreprise = candidature ? candidature.adresseEntreprise : document.getElementById("adresseEntrepriseInput").value;
+  var candidatureEnvoyee = candidature ? candidature.candidatureEnvoyee : document.getElementById("candidatureEnvoyeeInput").value;
+
+  if (!nomPoste || !adresseEntreprise || !candidatureEnvoyee) return;
+
+  var tableau = document.getElementById("tableau");
+  var nouvelleLigne = tableau.insertRow(-1);
+  
+  var caseACocher = document.createElement("input");
+  caseACocher.type = "checkbox";
+  nouvelleLigne.insertCell(0).appendChild(caseACocher);
+  
+  nouvelleLigne.insertCell(1).textContent = nomPoste;
+  nouvelleLigne.insertCell(2).textContent = adresseEntreprise;
+  nouvelleLigne.insertCell(3).textContent = candidatureEnvoyee;
+  
+  var ligne = {
+    id: id++,
+    nomPoste: nomPoste,
+    adresseEntreprise: adresseEntreprise,
+    candidatureEnvoyee: candidatureEnvoyee
+  };
+  
+  nouvelleLigne.dataset.id = ligne.id;
+  
+  var lignesEnregistrees = JSON.parse(localStorage.getItem("candidatures")) || [];
+  lignesEnregistrees.push(ligne);
+  localStorage.setItem("candidatures", JSON.stringify(lignesEnregistrees));
+}
+
 
 
 
